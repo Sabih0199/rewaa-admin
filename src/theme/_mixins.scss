@@ -1,0 +1,57 @@
+@use "sass:math";
+
+@function em($pixels) {
+    $converted: math.div(#{$pixels + "px"}, 16);
+    @return $converted;
+}
+
+@mixin radius($val) {
+    border-radius: $val;
+    -webkit-border-radius: $val;
+    -moz-border-radius: $val;
+}
+
+@mixin transition($val) {
+    -webkit-transition: $val;
+    -moz-transition: $val;
+    -ms-transition: $val;
+    -o-transition: $val;
+    transition: $val;
+}
+
+@mixin shadow($val) {
+    -webkit-box-shadow: $val;
+    box-shadow: $val;
+}
+
+@mixin generateUtil($prefix, $property) {
+    @for $i from 0 through 200 {
+        .#{$prefix}-#{$i} {
+            #{$property}: em(#{$i});
+        }
+    }
+}
+
+@mixin generateFontSizeClass($prefix) {
+    @for $i from 0 through 40 {
+        .#{$prefix}-#{$i} {
+            font-size: em(#{$i});
+        }
+    }
+}
+
+@mixin generateRadiusClass($prefix) {
+    @for $i from 0 through 25 {
+        .#{$prefix}-#{$i} {
+            @include radius($i#{px});
+        }
+    }
+}
+
+@include generateUtil("rwa", "width");
+
+@include generateUtil("rwa", "height");
+
+@include generateFontSizeClass("fs");
+
+@include generateRadiusClass("radius");

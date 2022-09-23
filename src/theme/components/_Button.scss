@@ -1,0 +1,49 @@
+@import "../../themes/variables";
+@import "../../themes/functions";
+@import "../../themes/mixins";
+
+.ev-btn {
+    &:not(&-sm) {
+        font-size: 13px;
+    }
+    &-primary {
+        @include shadow(0px 1px 2.85px 0.15px rgba(0, 0, 0, 0.1));
+        @include transition(none);
+        background-color: $bluePrimary;
+        border-color: $bluePrimary;
+        font-weight: 300;
+        &:hover,
+        &:focus,
+        &:active:focus {
+            @extend .ev-btn-primary;
+        }
+    }
+    &-secondary {
+        @include shadow(none);
+        @include transition(none);
+        color: $bluePrimary;
+        background-color: $white;
+        border-color: $bluePrimary;
+        &:hover,
+        &:focus,
+        &:active:focus {
+            @extend .ev-btn-secondary;
+        }
+    }
+    &-lg {
+        @include radius(20px);
+        min-width: 146px;
+        min-height: 40px;
+    }
+    &-md {
+        @include radius(17px);
+        min-width: 125px;
+        min-height: 34px;
+    }
+    &-sm {
+        font-size: 13px;
+        @include radius(14px);
+        min-width: 88px;
+        min-height: 20px;
+    }
+}

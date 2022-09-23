@@ -1,0 +1,22 @@
+@use "mixins";
+@use "variables";
+@import "fonts";
+@import "typography";
+@import "utils";
+@import "./components/TopNavbar";
+
+body {
+    font-family: $font-primary;
+    color: $black;
+    background-color: $gray;
+    margin-top: em(16);
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 991px) {
+}
+
+@media screen and (max-width: 767px) {
+}
