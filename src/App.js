@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import { DefaultLayout } from "./views/DefaultLayout";
 
@@ -8,9 +8,9 @@ import "./App.scss";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <DefaultLayout />
-    </BrowserRouter>
+    </Router>
   );
 }
 

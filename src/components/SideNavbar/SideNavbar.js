@@ -63,8 +63,12 @@ const submenus = [
   ],
 ];
 
-const SideBar = ({ isOpen, toggle }) => (
-  <div className={classNames("rwa-side-navbar sidebar", { "is-open": isOpen })}>
+const SideBar = ({ isOpen, handleSidebarClose }) => (
+  <div
+    className={classNames("rwa-side-navbar sidebar", {
+      "is-open": isOpen,
+    })}
+  >
     <div className="sidebar-header d-flex align-items-center justify-content-between">
       <Link to={APP_ROUTES.DASHBOARD}>
         <img
@@ -75,7 +79,7 @@ const SideBar = ({ isOpen, toggle }) => (
       </Link>
       <FontAwesomeIcon
         icon={faBars}
-        onClick={toggle}
+        onClick={handleSidebarClose}
         className="pointer sidebar-toggle-btn"
       />
     </div>

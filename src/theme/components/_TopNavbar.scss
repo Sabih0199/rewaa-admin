@@ -1,10 +1,25 @@
 .rwa-top-navbar {
+    margin-block-end: em(35);
+    border-bottom: 1px solid $border-primary;
+    .container-fluid {
+        justify-content: flex-end;
+    }
     .navbar-nav {
         .nav-item {
             .nav-link {
                 font-family: $font-secondary;
                 font-weight: bold;
+                padding-right: var(--bs-navbar-nav-link-padding-x);
+                padding-left: var(--bs-navbar-nav-link-padding-x);
             }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .rwa-top-navbar {
+        .sidebar-toggle-btn {
+            display: none;
         }
     }
 }

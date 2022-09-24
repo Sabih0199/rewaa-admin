@@ -5,24 +5,14 @@
     color: $sidenav-link-color;
     margin-left: em(-250);
     transition: all 0.5s;
-    padding-block: em(16);
     &.is-open {
         margin-left: 0;
         transition: 0.5s;
     }
-    &:not(.is-open) {
-        .sidebar-toggle-btn {
-            color: $black;
-            position: absolute;
-            left: 10px;
-            z-index: 99;
-            top: 10px;
-        }
-    }
     &.sidebar {
         .sidebar-header {
-            padding-inline: em(15);
             margin-block-end: em(20);
+            padding: 0.5rem em(15);
         }
         .side-menu {
             height: calc(100vh - 100px);
@@ -71,5 +61,17 @@
                 background-color: $body-bg;
             }
         }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .rwa-side-navbar {
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .rwa-side-navbar {
+        position: absolute;
+        z-index: 999;
     }
 }
