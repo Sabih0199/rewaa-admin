@@ -1,10 +1,3 @@
-@use "sass:math";
-
-@function em($pixels) {
-    $converted: math.div(#{$pixels + "px"}, 16);
-    @return $converted;
-}
-
 @mixin radius($val) {
     border-radius: $val;
     -webkit-border-radius: $val;
@@ -27,7 +20,7 @@
 @mixin generateUtil($prefix, $property) {
     @for $i from 0 through 200 {
         .#{$prefix}-#{$i} {
-            #{$property}: em(#{$i});
+            #{$property}: em($i);
         }
     }
 }
@@ -35,7 +28,7 @@
 @mixin generateFontSizeClass($prefix) {
     @for $i from 0 through 40 {
         .#{$prefix}-#{$i} {
-            font-size: em(#{$i});
+            font-size: em($i);
         }
     }
 }
@@ -48,9 +41,9 @@
     }
 }
 
-@include generateUtil("rwa", "width");
+@include generateUtil("rwaw", "width");
 
-@include generateUtil("rwa", "height");
+@include generateUtil("rwah", "height");
 
 @include generateFontSizeClass("fs");
 

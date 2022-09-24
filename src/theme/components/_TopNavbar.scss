@@ -1,23 +1,9 @@
-@import "../../theme/variables";
-
-.ev-topnavbar {
-    .navbar {
-        padding-top: 12.5px;
-        padding-bottom: 12.5px;
-        background-color: $grayDark;
-        .navbar-nav {
-            a {
-                color: $white;
-                &.dropdown-toggle {
-                    &::after {
-                        vertical-align: middle;
-                        border-top-color: transparent;
-                        border-right: 0;
-                        border-bottom: 0.3em solid transparent;
-                        border-left-color: $white;
-                        margin-left: 10px;
-                    }
-                }
+.rwa-top-navbar {
+    .navbar-nav {
+        .nav-item {
+            .nav-link {
+                font-family: $font-secondary;
+                font-weight: bold;
             }
         }
     }

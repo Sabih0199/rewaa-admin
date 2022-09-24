@@ -1,15 +1,17 @@
-@use "mixins";
-@use "variables";
+@import "functions";
+@import "mixins";
+@import "variables";
 @import "fonts";
 @import "typography";
 @import "utils";
+@import "./pages/DefaultLayout";
 @import "./components/TopNavbar";
+@import "./components/SideNavbar";
 
 body {
     font-family: $font-primary;
     color: $black;
-    background-color: $gray;
-    margin-top: em(16);
+    background-color: $body-bg;
 }
 
 @media screen and (max-width: 1024px) {
