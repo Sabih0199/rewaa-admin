@@ -9,7 +9,7 @@
                 padding-bottom: em(25);
                 &.price-field-disabled {
                     .rwa-input {
-                        max-width: em(120);
+                        width: em(120);
                         @include radius(0.25rem);
                     }
                 }

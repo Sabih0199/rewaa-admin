@@ -1,0 +1,42 @@
+.rwa-toggle-switch-btn {
+    input[type="checkbox"] {
+        visibility: hidden;
+        width: 0;
+        &.switched + label {
+            transform: rotate(360deg);
+            background-color: $bg-secondary;
+            &:before {
+                transform: translateX(20px);
+            }
+        }
+    }
+    input[type="checkbox"] {
+        &:not(.switched) + label {
+            background-color: $bg-secondary;
+        }
+    }
+    label {
+        display: flex;
+        width: 52px;
+        height: 32px;
+        @include radius(32px);
+        position: relative;
+        transition: transform 0.75s ease-in-out;
+        transform-origin: 50% 50%;
+        cursor: pointer;
+        &:before {
+            background-color: $white;
+            transition: transform 0.75s ease;
+            transition-delay: 0.5s;
+            content: "";
+            display: block;
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            @include radius(50%);
+            top: 4px;
+            left: 4px;
+            @include shadow(0px 1px 1px rgba($color: $black, $alpha: 0.24));
+        }
+    }
+}

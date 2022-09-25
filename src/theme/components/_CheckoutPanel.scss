@@ -19,6 +19,10 @@
             }
         }
     }
+    .panel-body {
+        background-color: $white;
+        padding: em(15) em(10);
+    }
     .panel-footer {
         background-color: $white;
         padding: em(15);
@@ -27,5 +31,12 @@
             padding: em(10);
             @include radius(0.25rem);
         }
+    }
+    .sep-1px {
+        height: 1px;
+        background-color: $border-primary;
+    }
+    .discount-field {
+        max-width: em(80);
     }
 }
