@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import classNames from "classnames";
 import { TopNavbar } from "../../components/TopNavbar";
 import { SideNavbar } from "../../components/SideNavbar";
@@ -9,41 +9,44 @@ import { APP_ROUTES } from "../../helpers/routerHelpers";
 
 const DefaultLayout = () => {
   const [sidebarIsOpen, setSidebarOpen] = useState(true);
-  // const [width, setWidth] = useState(window.innerWidth);
-  // const [height, setHeight] = useState(window.innerHeight);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
-  // const updateWidthAndHeight = () => {
-  //   setWidth(window.innerWidth);
-  //   setHeight(window.innerHeight);
-  // };
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
 
-  // useEffect(() => {
-  //   window.addEventListener("resize", updateWidthAndHeight);
-  //   return () => window.removeEventListener("resize", updateWidthAndHeight);
-  // });
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  });
 
   return (
     <main id="rwa-main" className="rwa-default-layout">
       <SideNavbar
         handleSidebarClose={() => {
-          setSidebarOpen(false);
+          width > 1023 ? setSidebarOpen(false) : setMobileSidebarOpen(false);
         }}
-        isOpen={sidebarIsOpen}
+        isOpen={width > 1023 ? sidebarIsOpen : mobileSidebarOpen}
       />
       <div
         className={classNames("rwa-content-wrapper content", {
-          "is-open": sidebarIsOpen,
+          "is-open": width > 1023 ? sidebarIsOpen : mobileSidebarOpen,
         })}
       >
         <TopNavbar
-          isSidebarOpen={sidebarIsOpen}
+          isSidebarOpen={width > 1023 ? sidebarIsOpen : mobileSidebarOpen}
           handleSidebarOpen={() => {
-            setSidebarOpen(true);
+            width > 1023 ? setSidebarOpen(true) : setMobileSidebarOpen(true);
           }}
         />
         <Routes>
           <Route exact path={APP_ROUTES.DASHBOARD} element={<Dashboard />} />
           <Route exact path={APP_ROUTES.INVENTORY} element={<Inventory />} />
+          <Route
+            path="/"
+            element={<Navigate replace to={APP_ROUTES.DASHBOARD} />}
+          />
         </Routes>
       </div>
     </main>
