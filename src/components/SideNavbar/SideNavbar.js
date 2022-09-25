@@ -25,41 +25,33 @@ const submenus = [
   [
     {
       title: "Item 1",
-      target: APP_ROUTES.POS_ONE,
     },
     {
       title: "Item 2",
-      target: APP_ROUTES.POS_TWO,
     },
   ],
   [
     {
       title: "Item 1",
-      target: APP_ROUTES.ORDER_MANAGEMENT_ONE,
     },
     {
       title: "Item 2",
-      target: APP_ROUTES.ORDER_MANAGEMENT_TWO,
     },
   ],
   [
     {
       title: "Item 1",
-      target: APP_ROUTES.STOCK_CONTROL_ONE,
     },
     {
       title: "Item 2",
-      target: APP_ROUTES.STOCK_CONTROL_TWO,
     },
   ],
   [
     {
       title: "Available Apps",
-      target: APP_ROUTES.AVAILABLE_APPS,
     },
     {
       title: "My Apps",
-      target: APP_ROUTES.MY_APPS,
     },
   ],
 ];
@@ -83,7 +75,7 @@ const SideBar = ({ isOpen, handleSidebarClose }) => {
       }}
     >
       <div
-        className={classNames("rwa-side-navbar sidebar", {
+        className={classNames("rwa-side-navbar sidebar h-100", {
           "is-open": isOpen,
         })}
       >
@@ -110,26 +102,26 @@ const SideBar = ({ isOpen, handleSidebarClose }) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={APP_ROUTES.INVENTORY}>
+              <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faWarehouse} className="me-2" />
                 Inventory
               </NavLink>
             </NavItem>
             <SubMenu title="POS" icon={faMagnifyingGlass} items={submenus[0]} />
             <NavItem>
-              <NavLink tag={Link} to={APP_ROUTES.EXPENSES}>
+              <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faSackDollar} className="me-2" />
                 Expenses
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={APP_ROUTES.PROMOTIONS}>
+              <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faTag} className="me-2" />
                 Promotions
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={APP_ROUTES.REPORTS}>
+              <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faChartLine} className="me-2" />
                 Reports
               </NavLink>
@@ -150,7 +142,7 @@ const SideBar = ({ isOpen, handleSidebarClose }) => {
               items={submenus[3]}
             />
             <NavItem>
-              <NavLink tag={Link} to={APP_ROUTES.SETTINGS}>
+              <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faGear} className="me-2" />
                 Settings
               </NavLink>
