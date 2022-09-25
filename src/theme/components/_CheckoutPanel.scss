@@ -1,0 +1,31 @@
+.rwa-checkout-panel {
+    .panel-head {
+        background-color: $white;
+        padding: em(11) em(10);
+        .head-content {
+            .settings-btn {
+                background-color: $bg-secondary;
+                @include radius(50%);
+                width: em(25);
+                height: em(25);
+                display: flex;
+                padding: 0;
+                &:hover {
+                    background-color: $bg-secondary;
+                }
+                svg {
+                    margin: auto;
+                }
+            }
+        }
+    }
+    .panel-footer {
+        background-color: $white;
+        padding: em(15);
+        .ftr-content {
+            background-color: $bg-primary;
+            padding: em(10);
+            @include radius(0.25rem);
+        }
+    }
+}

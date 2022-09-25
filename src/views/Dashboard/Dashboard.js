@@ -145,7 +145,7 @@ const Dashboard = () => {
             </div>
           </Col>
           <Col md={4}>
-            <CheckoutPanel data={ProductItems} />
+            <CheckoutPanel data={cartItemsData} />
           </Col>
         </Row>
       </Container>
