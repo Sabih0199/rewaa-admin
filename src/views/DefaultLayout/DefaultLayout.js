@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Container } from "reactstrap";
 import classNames from "classnames";
 import { TopNavbar } from "../../components/TopNavbar";
 import { SideNavbar } from "../../components/SideNavbar";
@@ -10,18 +9,18 @@ import { APP_ROUTES } from "../../helpers/routerHelpers";
 
 const DefaultLayout = () => {
   const [sidebarIsOpen, setSidebarOpen] = useState(true);
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
+  // const [width, setWidth] = useState(window.innerWidth);
+  // const [height, setHeight] = useState(window.innerHeight);
 
-  const updateWidthAndHeight = () => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  };
+  // const updateWidthAndHeight = () => {
+  //   setWidth(window.innerWidth);
+  //   setHeight(window.innerHeight);
+  // };
 
-  useEffect(() => {
-    window.addEventListener("resize", updateWidthAndHeight);
-    return () => window.removeEventListener("resize", updateWidthAndHeight);
-  });
+  // useEffect(() => {
+  //   window.addEventListener("resize", updateWidthAndHeight);
+  //   return () => window.removeEventListener("resize", updateWidthAndHeight);
+  // });
 
   return (
     <main id="rwa-main" className="rwa-default-layout">
@@ -42,12 +41,10 @@ const DefaultLayout = () => {
             setSidebarOpen(true);
           }}
         />
-        <Container fluid>
-          <Routes>
-            <Route exact path={APP_ROUTES.DASHBOARD} element={<Dashboard />} />
-            <Route exact path={APP_ROUTES.INVENTORY} element={<Inventory />} />
-          </Routes>
-        </Container>
+        <Routes>
+          <Route exact path={APP_ROUTES.DASHBOARD} element={<Dashboard />} />
+          <Route exact path={APP_ROUTES.INVENTORY} element={<Inventory />} />
+        </Routes>
       </div>
     </main>
   );

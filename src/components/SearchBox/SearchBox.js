@@ -1,17 +1,31 @@
-import { Form } from "reactstrap";
-
-import { TextInput } from "../TextInput"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { TextInput } from "../TextInput";
+import { Colors } from "../../theme/colors";
 
 const SearchBox = (props) => {
-    const { className = "" } = props;
-    return (
-        <Form className={`ev-searchbox ${className}`}>
-            <TextInput type="search" placeholder="Organization Search" name="search" />
-            <TextInput
-                type="submit"
-            />
-        </Form>
-    );
+  const {
+    className = "",
+    handleSearch = () => {},
+    placeholder = "Search...",
+    label = "Search Here",
+  } = props;
+  return (
+    <div className={`rwa-searchbox ${className}`}>
+      <span className="search-label">{label}</span>
+      <FontAwesomeIcon
+        icon={faSearch}
+        color={Colors.textPrimary}
+        className="search-icon"
+      />
+      <TextInput
+        type="search"
+        placeholder={placeholder}
+        name="search"
+        onChange={handleSearch}
+      />
+    </div>
+  );
 };
 
 export default SearchBox;

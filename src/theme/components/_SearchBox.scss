@@ -1,38 +1,27 @@
-@import "../../theme/variables";
-
-
-.ev-searchbox {
+.rwa-searchbox {
     position: relative;
-    min-width: em(412.22);
     [type="search"] {
+        padding-left: em(35);
         min-height: 40px;
         font-size: 14px;
         @include shadow(0px 1px 2.85px 0.15px rgba(0, 0, 0, 0.1));
-        @include radius(20px);
-        &::placeholder {
-            color: $grayLight;
-        }
+        @include radius(0.25rem);
+        border-color: $green;
+        border-width: 2px;
     }
-    [type="submit"] {
-        @include shadow(none);
-        font-size: 13px;
-        color: $white;
-        background-color: $bluePrimary;
+    .search-label {
         position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 91px;
-        width: initial;
-        height: 100%;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
+        color: $text-primary;
+        background-color: $white;
+        left: em(40);
+        font-size: em(12);
+        top: em(-15);
+        padding: em(5);
     }
-}
-
-@media screen and (max-width: 767px) {
-    .ev-searchbox {
-        min-width: 100%;
+    .search-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: em(10);
     }
 }

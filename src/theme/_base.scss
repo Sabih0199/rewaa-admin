@@ -7,11 +7,15 @@
 @import "./pages/DefaultLayout";
 @import "./components/TopNavbar";
 @import "./components/SideNavbar";
+@import "./components/PageHeader";
+@import "./components/SearchBox";
+@import "./components/DataTable";
 
 body {
     font-family: $font-primary;
     color: $black;
     background-color: $body-bg;
+    font-size: 16px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -21,4 +25,7 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
 }

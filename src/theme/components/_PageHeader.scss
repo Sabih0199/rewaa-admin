@@ -1,0 +1,35 @@
+.rwa-page-header {
+    margin-block-end: em(20);
+    padding-block: em(15);
+    background-color: $white;
+    .rwa-btn {
+        &.back-btn {
+            background-color: $bg-secondary;
+            @include radius(50%);
+            border-width: 0;
+            width: em(25);
+            height: em(25);
+            display: flex;
+            padding: 0;
+            margin-right: em(80);
+            &:hover {
+                background-color: $bg-secondary;
+            }
+            svg {
+                margin: auto;
+            }
+        }
+        &.layout-btn {
+            background-color: $bg-secondary;
+            border-width: 0;
+            color: $text-primary;
+            @include radius(0.25rem);
+            font-weight: bold;
+            .lock-icon {
+                margin-left: em(20);
+                padding-left: em(10);
+                border-left: 1px solid $text-primary;
+            }
+        }
+    }
+}

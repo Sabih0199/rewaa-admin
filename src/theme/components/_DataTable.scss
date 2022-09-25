@@ -1,0 +1,40 @@
+.rwa-data-table {
+    background-color: $white;
+    thead {
+        border-top: 1px solid var(--bs-border-color);
+    }
+    tbody {
+        tr {
+            td {
+                padding-bottom: em(25);
+                &.price-field-disabled {
+                    .rwa-input {
+                        max-width: em(120);
+                        @include radius(0.25rem);
+                    }
+                }
+                &.qty-field {
+                    .rwa-input {
+                        max-width: em(50);
+                        @include radius(0.25rem);
+                    }
+                }
+            }
+        }
+    }
+}
+.rwa-table-ftr {
+    .rwa-input {
+        &.discount-field {
+            max-width: em(120);
+            @include radius(0.25rem);
+            margin-left: em(40);
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .rwa-data-table {
+        white-space: nowrap;
+    }
+}

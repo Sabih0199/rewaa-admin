@@ -9,7 +9,7 @@ const Button = (props) => {
     disabled,
     type,
     secondary = false,
-    size = "lg",
+    size = "md",
   } = props;
   return (
     <RwaButton
