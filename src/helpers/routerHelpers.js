@@ -18,20 +18,3 @@ export const APP_ROUTES = {
   MY_APPS: "/my-apps",
   SETTINGS: "/Settings",
 };
-
-export const getRoute = (route, obj = {}) => {
-  if (Object.keys(obj).length) {
-    let objectKeys = Object.keys(obj);
-    objectKeys.forEach((item) => {
-      route = route.replace(new RegExp(/:([\d\w?])+/, "i"), (match) => {
-        let formattedMatchedValue =
-          match[match.length - 1] === "?"
-            ? match.slice(1, match.length - 1)
-            : match.slice(1);
-        return obj[formattedMatchedValue];
-      });
-    });
-    return route;
-  }
-  return route;
-};

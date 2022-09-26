@@ -12,14 +12,14 @@ const DefaultLayout = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
-  const updateWidth = () => {
-    setWidth(window.innerWidth);
-  };
-
   useEffect(() => {
+    const updateWidth = () => {
+      setWidth(window.innerWidth);
+    };
+
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
-  });
+  }, []);
 
   return (
     <main id="rwa-main" className="rwa-default-layout">
