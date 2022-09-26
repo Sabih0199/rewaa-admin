@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { withTranslation } from "react-i18next";
 import OutsideClickHandler from "react-outside-click-handler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,42 +22,7 @@ import { APP_ROUTES } from "../../helpers/routerHelpers";
 import SubMenu from "./SubMenu";
 import logo from "../../assets/images/logo.png";
 
-const submenus = [
-  [
-    {
-      title: "Item 1",
-    },
-    {
-      title: "Item 2",
-    },
-  ],
-  [
-    {
-      title: "Item 1",
-    },
-    {
-      title: "Item 2",
-    },
-  ],
-  [
-    {
-      title: "Item 1",
-    },
-    {
-      title: "Item 2",
-    },
-  ],
-  [
-    {
-      title: "Available Apps",
-    },
-    {
-      title: "My Apps",
-    },
-  ],
-];
-
-const SideBar = ({ isOpen, handleSidebarClose }) => {
+const SideBar = ({ isOpen, handleSidebarClose, t }) => {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -67,6 +33,41 @@ const SideBar = ({ isOpen, handleSidebarClose }) => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   });
+
+  const submenus = [
+    [
+      {
+        title: t("Item 1"),
+      },
+      {
+        title: t("Item 2"),
+      },
+    ],
+    [
+      {
+        title: t("Item 1"),
+      },
+      {
+        title: t("Item 2"),
+      },
+    ],
+    [
+      {
+        title: t("Item 1"),
+      },
+      {
+        title: t("Item 2"),
+      },
+    ],
+    [
+      {
+        title: t("Available Apps"),
+      },
+      {
+        title: t("My Apps"),
+      },
+    ],
+  ];
 
   return (
     <OutsideClickHandler
@@ -98,53 +99,57 @@ const SideBar = ({ isOpen, handleSidebarClose }) => {
             <NavItem>
               <NavLink tag={Link} to={APP_ROUTES.DASHBOARD}>
                 <FontAwesomeIcon icon={faHome} className="me-2" />
-                Dashboard
+                {t("Dashboard")}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faWarehouse} className="me-2" />
-                Inventory
+                {t("Inventory")}
               </NavLink>
             </NavItem>
-            <SubMenu title="POS" icon={faMagnifyingGlass} items={submenus[0]} />
+            <SubMenu
+              title={t("POS")}
+              icon={faMagnifyingGlass}
+              items={submenus[0]}
+            />
             <NavItem>
               <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faSackDollar} className="me-2" />
-                Expenses
+                {t("Expenses")}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faTag} className="me-2" />
-                Promotions
+                {t("Promotions")}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faChartLine} className="me-2" />
-                Reports
+                {t("Reports")}
               </NavLink>
             </NavItem>
             <SubMenu
-              title="Order Management"
+              title={t("Order Management")}
               icon={faCalendarCheck}
               items={submenus[1]}
             />
             <SubMenu
-              title="Stock Control"
+              title={t("Stock Control")}
               icon={faCartPlus}
               items={submenus[2]}
             />
             <SubMenu
-              title="Applications"
+              title={t("Applications")}
               icon={faTableCellsLarge}
               items={submenus[3]}
             />
             <NavItem>
               <NavLink tag={Link}>
                 <FontAwesomeIcon icon={faGear} className="me-2" />
-                Settings
+                {t("Settings")}
               </NavLink>
             </NavItem>
           </Nav>
@@ -154,4 +159,4 @@ const SideBar = ({ isOpen, handleSidebarClose }) => {
   );
 };
 
-export default SideBar;
+export default withTranslation()(SideBar);

@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { withTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faLock } from "@fortawesome/free-solid-svg-icons";
 import { Container } from "reactstrap";
 import { Button } from "../Button";
 import { Colors } from "../../theme/colors";
 
-const PageHeader = () => {
+const PageHeader = ({ t }) => {
   const history = useNavigate();
 
   return (
@@ -23,7 +24,7 @@ const PageHeader = () => {
             className="layout-btn"
             title={
               <div>
-                classic - default
+                {t("classic - default")}
                 <FontAwesomeIcon
                   icon={faLock}
                   color={Colors.textPrimary}
@@ -38,4 +39,4 @@ const PageHeader = () => {
   );
 };
 
-export default PageHeader;
+export default withTranslation()(PageHeader);

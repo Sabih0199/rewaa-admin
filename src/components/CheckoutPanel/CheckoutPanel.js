@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClock,
@@ -17,7 +18,7 @@ import { TextInput } from "../TextInput";
 import { Colors } from "../../theme/colors";
 
 const CheckoutPanel = (props) => {
-  const { className = "", data = {} } = props;
+  const { className = "", data = {}, t } = props;
   const [dropdownToggle, setDropdownToggle] = useState(false);
   const [discount, setDiscount] = useState(0);
   const [toggleDiscount, setToggleDiscount] = useState(false);
@@ -28,12 +29,16 @@ const CheckoutPanel = (props) => {
         <div className="head-content d-flex justify-content-between align-items-center">
           <div className="d-flex">
             <FontAwesomeIcon icon={faClock} color={Colors.black} />
-            <CustomText text="Park Sale" className="fw-bold ms-2" size={12} />
+            <CustomText
+              text={t("Park Sale")}
+              className="fw-bold ms-2"
+              size={12}
+            />
           </div>
           <div className="d-flex">
             <FontAwesomeIcon icon={faRotateLeft} color={Colors.black} />
             <CustomText
-              text="Retrieve Sale"
+              text={t("Retrieve Sale")}
               className="fw-bold ms-2"
               size={12}
             />
@@ -46,7 +51,7 @@ const CheckoutPanel = (props) => {
               <FontAwesomeIcon icon={faEllipsisH} color={Colors.black} />
             </DropdownToggle>
             <DropdownMenu end={true}>
-              <DropdownItem>item 1</DropdownItem>
+              <DropdownItem>{t("Item 1")}</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </div>
@@ -54,9 +59,9 @@ const CheckoutPanel = (props) => {
       <div className="panel-body mb-4">
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
-            <CustomText text="Subtotal" size={14} />
+            <CustomText text={t("Subtotal")} size={14} />
             <CustomText
-              text="Tax Exclusive"
+              text={t("Tax Exclusive")}
               className="ms-2 opacity-25"
               size={12}
             />
@@ -65,7 +70,7 @@ const CheckoutPanel = (props) => {
         </div>
         <div className="sep-1px my-3"></div>
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <CustomText text="Discount" size={14} />
+          <CustomText text={t("Discount")} size={14} />
           <div className="d-flex align-items-center">
             <div className="d-flex align-items-center me-2">
               <CustomText text="%" />
@@ -90,23 +95,23 @@ const CheckoutPanel = (props) => {
           </div>
         </div>
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <CustomText text="Discount" size={14} />
+          <CustomText text={t("Discount")} size={14} />
           <CustomText text="0.00" className="fw-bold" size={14} />
         </div>
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <CustomText text="Promotions" size={14} />
+          <CustomText text={t("Promotions")} size={14} />
           <CustomText text="0.00" className="fw-bold" size={14} />
         </div>
         <div className="d-flex justify-content-between align-items-center">
-          <CustomText text="Tax" size={14} />
+          <CustomText text={t("Tax")} size={14} />
           <CustomText text="21.70" className="fw-bold" size={14} />
         </div>
         <div className="sep-1px my-3"></div>
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
-            <CustomText text="Total" className="fw-bold" size={14} />
+            <CustomText text={t("Total")} className="fw-bold" size={14} />
             <CustomText
-              text="Tax Exclusive"
+              text={t("Tax Exclusive")}
               className="ms-2 opacity-25"
               size={12}
             />
@@ -125,9 +130,9 @@ const CheckoutPanel = (props) => {
         <div className="ftr-content">
           <div className="d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
-              <CustomText text="Pay" className="fw-bold text-white" />
+              <CustomText text={t("Pay")} className="fw-bold text-white" />
               <CustomText
-                text={`${data.length} items`}
+                text={`${t(data.length)} items`}
                 className="text-white ms-2"
                 size={12}
               />
@@ -140,4 +145,4 @@ const CheckoutPanel = (props) => {
   );
 };
 
-export default CheckoutPanel;
+export default withTranslation()(CheckoutPanel);

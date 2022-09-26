@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withTranslation } from "react-i18next";
 import { Container, Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,7 +16,7 @@ import { CustomDataTable } from "../../components/CustomDataTable";
 import { ProductItems } from "../../data/mock";
 import { Colors } from "../../theme/colors";
 
-const Dashboard = () => {
+const Dashboard = ({ t }) => {
   const [cartItemsData, setCartItemsData] = useState(ProductItems);
 
   return (
@@ -26,7 +27,7 @@ const Dashboard = () => {
           <Col md={8}>
             <SearchBox
               placeholder=""
-              label="Scan or type product"
+              label={t("Scan or type product")}
               className="mb-4"
             />
             <CustomDataTable
@@ -47,11 +48,11 @@ const Dashboard = () => {
                   },
                 },
                 {
-                  name: "Product Name",
+                  name: t("Product Name"),
                   selector: (data) => {
                     return (
                       <CustomText
-                        text={data?.Name || ""}
+                        text={t(data?.Name) || ""}
                         className="fw-bold"
                         size={14}
                       />
@@ -59,7 +60,7 @@ const Dashboard = () => {
                   },
                 },
                 {
-                  name: "Price",
+                  name: t("Price"),
                   selector: (data) => {
                     return (
                       <TextInput
@@ -71,7 +72,7 @@ const Dashboard = () => {
                   },
                 },
                 {
-                  name: "Quantity",
+                  name: t("Quantity"),
                   selector: (data) => {
                     return (
                       <TextInput
@@ -97,7 +98,7 @@ const Dashboard = () => {
                   },
                 },
                 {
-                  name: "Total Price",
+                  name: t("Total Price"),
                   selector: (data) => {
                     return (
                       <CustomText
@@ -131,13 +132,16 @@ const Dashboard = () => {
               />
               <div className="ms-3">
                 <CustomText text="SKU" className="fw-bold" size={14} />
-                <CustomText text="aaa" size={12} />
+                <CustomText text={t("aaa")} size={12} />
               </div>
               <div className="ms-3">
                 <CustomText text="Tax" size={14} />
                 <CustomText text="1.30" size={12} />
               </div>
-              <TextInput placeholder="Discount%" className="discount-field" />
+              <TextInput
+                placeholder={t("Discount%")}
+                className="discount-field"
+              />
             </div>
           </Col>
           <Col md={4}>
@@ -149,4 +153,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default withTranslation()(Dashboard);
