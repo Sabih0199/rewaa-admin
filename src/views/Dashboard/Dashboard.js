@@ -11,18 +11,9 @@ import { SearchBox } from "../../components/SearchBox";
 import { CustomText } from "../../components/CustomText";
 import { TextInput } from "../../components/TextInput";
 import { CheckoutPanel } from "../../components/CheckoutPanel";
-import { DataTable } from "../../components/DataTable";
+import { CustomDataTable } from "../../components/CustomDataTable";
 import { ProductItems } from "../../data/mock";
 import { Colors } from "../../theme/colors";
-
-const COLUMNS = {
-  DELETE: "",
-  PRODUCT_NAME: "Product Name",
-  PRICE: "Price",
-  QUANTITY: "Quantity",
-  TOTAL_PRICE: "Total Price",
-  ACTION: "",
-};
 
 const Dashboard = () => {
   const [cartItemsData, setCartItemsData] = useState(ProductItems);
@@ -38,12 +29,12 @@ const Dashboard = () => {
               label="Scan or type product"
               className="mb-4"
             />
-            <DataTable
+            <CustomDataTable
               data={cartItemsData}
-              config={[
+              columns={[
                 {
-                  title: COLUMNS.DELETE,
-                  render: (data) => {
+                  name: "",
+                  selector: (data) => {
                     return (
                       <FontAwesomeIcon
                         icon={faTrash}
@@ -56,8 +47,8 @@ const Dashboard = () => {
                   },
                 },
                 {
-                  title: COLUMNS.PRODUCT_NAME,
-                  render: (data) => {
+                  name: "Product Name",
+                  selector: (data) => {
                     return (
                       <CustomText
                         text={data?.Name || ""}
@@ -68,18 +59,23 @@ const Dashboard = () => {
                   },
                 },
                 {
-                  title: COLUMNS.PRICE,
-                  tdClass: "price-field-disabled",
-                  render: (data) => {
-                    return <TextInput disabled value={data?.Price || ""} />;
+                  name: "Price",
+                  selector: (data) => {
+                    return (
+                      <TextInput
+                        className="price-field-disabled"
+                        disabled
+                        value={data?.Price || ""}
+                      />
+                    );
                   },
                 },
                 {
-                  title: COLUMNS.QUANTITY,
-                  tdClass: "qty-field",
-                  render: (data) => {
+                  name: "Quantity",
+                  selector: (data) => {
                     return (
                       <TextInput
+                        className="qty-field"
                         type="number"
                         min="1"
                         value={data?.Qty}
@@ -101,8 +97,8 @@ const Dashboard = () => {
                   },
                 },
                 {
-                  title: COLUMNS.TOTAL_PRICE,
-                  render: (data) => {
+                  name: "Total Price",
+                  selector: (data) => {
                     return (
                       <CustomText
                         text={(data?.Price * data?.Qty).toFixed(1) || ""}
@@ -112,8 +108,8 @@ const Dashboard = () => {
                   },
                 },
                 {
-                  title: COLUMNS.ACTION,
-                  render: (data) => {
+                  name: "",
+                  selector: (data) => {
                     return (
                       <FontAwesomeIcon
                         icon={faChevronDown}
@@ -125,7 +121,7 @@ const Dashboard = () => {
                 },
               ]}
             />
-            <div className="rwa-table-ftr bg-white px-2 pt-2 pb-4 d-flex">
+            <div className="rwa-table-ftr bg-white px-2 py-4 d-flex">
               <FontAwesomeIcon
                 icon={faShoppingBag}
                 color={Colors.lightBlue}
