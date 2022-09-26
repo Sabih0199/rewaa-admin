@@ -34,8 +34,13 @@ const Topbar = ({ isSidebarOpen, handleSidebarOpen = () => {}, t }) => {
       )}
       <Nav className="ms-auto flex-row align-items-center" navbar>
         <NavItem>
-          <NavLink tag={Link} onClick={() => changeLanguageAction("ar")}>
-            {t("Arabic")}
+          <NavLink
+            tag={Link}
+            onClick={() =>
+              changeLanguageAction(selectedLang === "en" ? "ar" : "en")
+            }
+          >
+            {t(selectedLang === "en" ? "Arabic" : "English")}
           </NavLink>
         </NavItem>
         <NavItem>
